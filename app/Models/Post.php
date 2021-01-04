@@ -25,8 +25,8 @@ class Post extends Model
     /**
      * Get all of the comments attached to the post.
      */
-    public function posts()
+    public function comments()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Comment::class);
     }
 }

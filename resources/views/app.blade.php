@@ -8,19 +8,12 @@
 
     <title>{{ config('app.name', 'Crane') }}</title>
 
-    <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
-    <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
-    <!-- Scripts -->
-    @routes
-    <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/9971083e06.js" crossorigin="anonymous"></script>
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased text-gray-900">
     <div class="flex items-center justify-between h-16 px-8 shadow-lg w-100">
         <h1 class="text-2xl font-bold">Crane</h1>
 
@@ -33,7 +26,7 @@
 
     <div class="grid grid-cols-2 gap-4 p-4 mt-8 xl:mx-auto xl:max-w-6xl">
         <!-- Calendar -->
-        <div class="col-span-2 p-4 bg-gray-100 shadow md:col-span-1">
+        <div class="h-64 col-span-2 p-4 bg-gray-100 shadow md:col-span-1">
             <h2 class="mb-2 text-2xl font-bold">Calendar</h2>
 
             Calendar Here
@@ -42,14 +35,15 @@
         <!-- Articles -->
         <div class="col-span-2 md:col-span-1">
 
-            <h2 class="mb-2 text-2xl font-bold">Upcoming posts</h2>
+            <h2 class="mb-2 text-2xl font-bold">Upcoming Posts</h2>
 
             <div class="flex flex-col space-y-4">
-                @for ($i = 0; $i < 5; $i++) <div class="flex justify-between gap-4 p-4 bg-gray-100 shadow">
+                @foreach ($posts as $post)
+                <a href="/posts/{{ $post->id }}" class="flex justify-between gap-4 p-4 transition-all duration-100 ease-in-out transform bg-gray-100 shadow cursor-pointer hover:-translate-y-1 hover:shadow-xl">
                     <!-- Published Status & Title -->
                     <div class="flex items-center gap-4">
-                        <i class="text-green-500 fad fa-circle"></i>
-                        <div class="font-semibold">Post Title</div>
+                        <i class="{{ $post->approved_by ? 'text-green-500 fad fa-circle' : 'text-gray-500 far fa-circle' }}"></i>
+                        <div class="font-semibold">{{ $post->title }}</div>
                     </div>
 
                     <div class="flex">
@@ -68,11 +62,11 @@
                             <i class="fab fa-instagram"></i>
                         </div>
                     </div>
+                </a>
+                @endforeach
             </div>
-            @endfor
-        </div>
 
-    </div>
+        </div>
     </div>
 
     <!-- 

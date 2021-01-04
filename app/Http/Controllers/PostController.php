@@ -36,18 +36,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Post $post)
-    {
-        //
+        return view('posts.edit', [
+            'post' => $post
+        ]);
     }
 
     /**
