@@ -58,4 +58,12 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Get all of the user's comments.
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
