@@ -19,7 +19,8 @@ class Post extends Model
         'title',
         'content',
         'file',
-        'approved_by'
+        'approved_by',
+        'publish_at'
     ];
 
     /**

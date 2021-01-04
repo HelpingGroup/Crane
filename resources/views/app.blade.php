@@ -39,30 +39,38 @@
 
             <div class="flex flex-col space-y-4">
                 @foreach ($posts as $post)
-                <a href="/posts/{{ $post->id }}" class="flex justify-between gap-4 p-4 transition-all duration-100 ease-in-out transform bg-gray-100 shadow cursor-pointer hover:-translate-y-1 hover:shadow-xl">
-                    <!-- Published Status & Title -->
-                    <div class="flex items-center gap-4">
-                        <i class="{{ $post->approved_by ? 'text-green-500 fad fa-circle' : 'text-gray-500 far fa-circle' }}"></i>
-                        <div class="font-semibold">{{ $post->title }}</div>
-                    </div>
+                <div>
+                    <div class="mb-1 text-sm font-light">Date Here</div>
+                    <a href="/posts/{{ $post->id }}" class="flex justify-between gap-4 p-4 transition-all duration-100 ease-in-out transform bg-gray-100 shadow cursor-pointer hover:-translate-y-1 hover:shadow-lg">
+                        <!-- Published Status & Title -->
+                        <div class="flex items-center gap-4">
+                            <i class="{{ $post->approved_by ? 'text-green-500 fad fa-circle' : 'text-gray-500 far fa-circle' }}"></i>
+                            <div class="font-semibold">{{ $post->title }}</div>
+                        </div>
 
-                    <div class="flex">
-                        <!-- Date/Time to Publish -->
+                        <div class="flex">
+                            <!-- Date/Time to Publish -->
 
-                        <!-- Comments -->
-                        <!-- <span class="relative flex w-3 h-3">
+                            <!-- Comments -->
+                            <!-- <span class="relative flex w-3 h-3">
                                 <span class="absolute inline-flex w-full h-full bg-purple-400 rounded-full opacity-75 animate-ping"></span>
                                 <span class="relative inline-flex w-3 h-3 bg-purple-500 rounded-full"></span>
                             </span> -->
 
-                        <!-- Platforms -->
-                        <div class="flex items-center gap-4">
-                            <i class="fab fa-twitter"></i>
-                            <i class="fab fa-facebook"></i>
-                            <i class="fab fa-instagram"></i>
+                            <!-- Platforms -->
+                            <div class="flex items-center gap-4">
+                                <i class="fab fa-twitter"></i>
+                                <i class="fab fa-facebook"></i>
+                                <i class="fab fa-instagram"></i>
+                                <i class="fab fa-linkedin-in"></i>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
+
+                @if($loop->index >= 4)
+                @break
+                @endif
                 @endforeach
             </div>
 

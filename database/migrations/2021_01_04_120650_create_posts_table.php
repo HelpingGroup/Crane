@@ -19,8 +19,8 @@ class CreatePostsTable extends Migration
             
             $table->foreignId('user_id');
             
-            $table->string('title');
-            $table->string('content');
+            $table->string('title')->nullable();
+            $table->string('content')->nullable();
             $table->string('file')->nullable();
             
             $table->foreignId('approved_by')->nullable();

@@ -3,7 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+
 use App\Models\Post;
+use App\Models\Comment;
 
 class PostSeeder extends Seeder
 {
@@ -15,7 +17,8 @@ class PostSeeder extends Seeder
     public function run()
     {
         Post::factory()
-            ->times(25)
+            ->times(10)
+            ->has(Comment::factory()->count(3))
             ->create();
     }
 }
