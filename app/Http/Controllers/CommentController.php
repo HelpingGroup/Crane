@@ -2,84 +2,47 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DeleteCommentRequest;
+use App\Http\Requests\StoreCommentRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCommentRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Comment $comment)
-    {
-        //
+        $validated = $request->validated();
+        
+        Comment::create([
+            'user_id' => Auth::user()->id,
+            'post_id' => $validated['post_id'],
+            'comment' => $validated['comment']
+        ]);
+        
+        return redirect()->route('posts', ['post' => $validated['post_id']]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy(DeleteCommentRequest $request)
     {
-        //
+        $validated = $request->validated();
+        
+        Comment::destroy($validated['comment_id']);
+
+        return redirect()->route('posts', ['post' => $validated['post_id']]);
     }
 }
