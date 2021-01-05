@@ -37,9 +37,9 @@
 
       <!-- File -->
       @if(count($post->files) >= 1)
-      <div class="mt-4 bg-gray-100 rounded shadow">
+      <div class="mt-4">
         @foreach($post->files as $file)
-        <img src="{{ Storage::url($file->file_path) }}" alt="{{ $post->title }}" class="w-full h-auto">
+        <img src="{{ Storage::url($file->file_path) }}" alt="{{ $post->title }}" class="w-auto h-48 p-4 bg-gray-100 rounded shadow max-h-48">
         @endforeach
       </div>
       @else
@@ -120,14 +120,16 @@
 
       @foreach($post->comments as $comment)
       <div class="flex gap-4">
-        <img src="/test-headshot.png" alt="Name here" class="w-12 h-12 rounded-full">
+        @if ($comment->user_id === Auth::user()->id)
+        <img src="/test-1.jpg" alt="Name here" class="w-12 h-12 rounded-full">
+        @endif
         <div class="flex items-center flex-grow gap-4">
           <div class="flex flex-col flex-grow">
             <div class="flex-grow p-4 border rounded">
               {{ $comment->comment }}
             </div>
 
-            <div class="flex items-center justify-end gap-2 mt-2">
+            <div class="flex items-center @if ($comment->user_id === Auth::user()->id) justify-end @endif gap-2 mt-2">
               @if(Auth::user()->id === $comment->user_id)
               <i class="fal fa-pencil"></i>
 
@@ -148,10 +150,13 @@
             </div>
           </div>
         </div>
+        @if ($comment->user_id !== Auth::user()->id)
+        <img src="/test-2.jpg" alt="Name here" class="w-12 h-12 rounded-full">
+        @endif
       </div>
       @endforeach
     </div>
   </div>
-  
+
 </div>
 @endsection

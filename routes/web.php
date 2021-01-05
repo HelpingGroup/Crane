@@ -23,7 +23,9 @@ Route::post('/posts/{post}/comments', [CommentController::class, 'store']);
 Route::delete('/posts/{post}/comments', [CommentController::class, 'destroy']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/collaborate', function () {
-    return view('app', [
-        'posts' => Post::all()->sortBy('publish_at')
+    return view('collaborate', [
+        'posts' => Post::all()->groupBy(function ($post, $key) {
+            return DateTime::createFromFormat('Y-m-d H:i:s', $post->publish_at)->format('F');
+        })
     ]);
 })->name('collaborate');
