@@ -6,7 +6,7 @@ About Crane here.
 
 ## Roadmap
 
-### v0.1 - Minimum Viable Produce
+### v0.1 - Minimum Usable Product
 
 - ~~Basic application structure with loose authentication.~~
 - ~~Ability to create post; title, content, optional file and approval status.~~
@@ -29,6 +29,6 @@ About Crane here.
 - Users (managers) can edit user roles and permission groups.
 - Scheduled posts will be automatically shared to their respective platforms, given that the post is approved by a manager before the publish date.
 
-### 0.4 - Metrics
+### 0.4 - Metrics / Minimum Viable Product
 
 - Ability to visualise and track key metrics across social media platforms; as a whole and per post.
