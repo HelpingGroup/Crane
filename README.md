@@ -8,9 +8,9 @@ About Crane here.
 
 ### v0.1 - Minimum Viable Produce
 
-- Basic application structure with loose authentication.
-- Ability to create post; title, content, optional file and approval status.
-- Ability to comment on posts.
+- ~~Basic application structure with loose authentication.~~
+- ~~Ability to create post; title, content, optional file and approval status.~~
+- ~~Ability to comment on posts.~~
 
 ### v0.2 - User Permissions & Platform-Specific Variations (current)
 
