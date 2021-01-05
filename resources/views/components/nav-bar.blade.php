@@ -7,5 +7,6 @@
         <a class="text-gray-900" href="/collaborate">Collaborate</a>
         <a class="text-gray-400 cursor-not-allowed" href="#">Metrics</a>
         <a class="text-gray-400 cursor-not-allowed" href="#">Super Secret</a>
+        <a class="text-gray-900" href="{{ route('profile.show') }}">Profile</a>
     </div>
 </div>

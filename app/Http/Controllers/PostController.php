@@ -29,9 +29,14 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        Post::create($request);
+        $post = Post::create([
+            'user_id' => Auth::user()->id,
+            'title' => $request->title,
+            'content' => $request->content,
+            'publish_at' => $request->publish_at
+        ]);
         
-        return redirect()->route('collaborate');
+        return redirect()->route('posts', ['post' => $post->id]);
     }
 
     /**

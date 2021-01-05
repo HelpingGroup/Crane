@@ -5,14 +5,10 @@
 @section('content')
 <x-nav-bar />
 
-<!-- TODO: Finish actions (approve post, remove approval) -->
-<!-- TODO: Ability to upload and delete a media file -->
-<!-- TODO: Show errors near form fields when there's an error passed back -->
-
-<div class="grid grid-cols-3 gap-8 p-4 mt-8 xl:mx-auto xl:max-w-6xl">
+<div class="grid grid-cols-3 gap-8 p-4 mt-8 md:grid-cols-2 lg:grid-cols-3 lg:mx-auto xl:max-w-6xl">
 
   <!-- Content & Actions -->
-  <div class="col-span-3 md:col-span-2">
+  <div class="col-span-3 md:col-span-1 lg:col-span-2">
     <!-- Content -->
     <form id="update-post" action="/posts/{{ $post->id }}" method="post" enctype="multipart/form-data">
       @csrf
@@ -22,7 +18,12 @@
       <input type="text" name="title" class="w-full text-2xl font-bold border-none appearance-none focus:outline-none" value="{{ $post->title }}" placeholder="Post Title" />
 
       <div class="flex items-center justify-between mt-2">
-        <input type="datetime" name="publish_at" id="publish_at" class="border-none appearance-none focus:outline-none" value="{{ date('d-m-y H:i', strtotime($post->publish_at)) }}">
+        <div class="flex flex-col">
+          <input type="datetime" name="publish_at" id="publish_at" class="border-none appearance-none focus:outline-none" value="{{ date('d-m-y H:i', strtotime($post->publish_at)) }}">
+          @error('publish_at')
+          <div class="text-sm text-red-600">{{ $message }}</div>
+          @enderror
+        </div>
         @if($post->isApproved())
         <div class="p-2 px-4 bg-green-100 rounded-full">Approved</div>
         @else
@@ -57,7 +58,6 @@
       </button>
     </form>
     @endif
-
 
     <!-- Actions -->
     <div class="mt-4">
@@ -107,7 +107,7 @@
   </div>
 
   <!-- Comments -->
-  <div class="col-span-3 md:col-span-1">
+  <div class="col-span-3 md:col-span-1 lg:col-span-1">
     <h2 class="mb-2 text-2xl font-bold">Comments</h2>
 
     <div class="flex flex-col gap-4">
@@ -152,6 +152,6 @@
       @endforeach
     </div>
   </div>
-
+  
 </div>
 @endsection

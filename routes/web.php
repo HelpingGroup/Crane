@@ -8,7 +8,8 @@ use App\Models\Post;
 
 Route::view('/', 'welcome');
 
-Route::get('/posts', function() { return redirect('/collaborate'); });
+Route::redirect('/posts', '/collaborate');
+
 Route::post('/posts', [PostController::class, 'store']);
 Route::get('/posts/create', [PostController::class, 'create']);
 Route::put('/posts/{post}/approve', [PostController::class, 'approve']);
