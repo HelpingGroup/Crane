@@ -14,6 +14,7 @@ About Crane here.
 
 ### v0.2 - User Permissions & Platform-Specific Variations (current)
 
+- Better way for users to select and edit the datetime for posting schedules (publish_at)
 - Indicate which platforms to post on
 - Give users the ability to personalise their profile (profile photo, name)
 - Comment section will reflect when someone updates a post (updates content, deletes an image, requests, removes and gives a post approval)

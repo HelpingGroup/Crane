@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->foreignId('user_id');
             
             $table->string('title')->nullable();
-            $table->string('content')->nullable();
+            $table->text('content')->nullable();
             
             $table->foreignId('approved_by')->nullable();
         });
