@@ -23,8 +23,8 @@ class PostFactory extends Factory
     {
         return [
             'user_id' => 1,
-            'title' => $this->faker->realText(20, 1),
-            'content' => $this->faker->realText(200, 1),
+            'title' => $this->faker->text(20),
+            'content' => $this->faker->text(200),
             'publish_at' => $this->faker->dateTimeBetween('+1 week', '+1 month')
         ];
     }

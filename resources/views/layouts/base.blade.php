@@ -11,12 +11,16 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="https://kit.fontawesome.com/9971083e06.js" crossorigin="anonymous"></script>
+
+    @stack('header')
 </head>
 
 <body>
     <div class="font-sans antialiased text-gray-900">
         @yield('content')
     </div>
+
+    @stack('scripts')
 </body>
 
 </html>

@@ -5,7 +5,12 @@
 @section('content')
 <x-nav-bar />
 
-<form action="/posts/{{ $post->id }}" method="post">
+<!-- TODO: Finish actions (save changes, approve post, remove approval, delete post) -->
+<!-- TODO: Ability to upload and delete a media file -->
+<!-- TODO: Ability to edit date/time of posting -->
+<!-- TODO: Show errors near form fields when there's an error passed back -->
+
+<form action="/posts/{{ $post->id }}" method="post" enctype="multipart/form-data">
   @csrf
   @method('PUT')
 
@@ -26,9 +31,18 @@
       <textarea class="w-full bg-transparent rounded-md appearance-none resize-y" rows="6">
       {{ $post->content }}
       </textarea>
+    </div>
 
-      @if($post->file)
-      <img src="{{ $post->file }}" alt="{{ $post->title }}" class="w-full h-auto">
+    <div class="col-span-3 bg-gray-100 rounded shadow md:col-span-2">
+      @if($post->files)
+      @foreach($post->files as $file)
+      <img src="{{ Storage::url($file->name) }}" alt="{{ $post->title }}" class="w-full h-auto">
+      @endforeach
+      @else
+      <div class="p-4">
+        <i class="mr-1 fal fa-images"></i> Drag image here.
+        <input type="file" name="file" id="file">
+      </div>
       @endif
     </div>
 

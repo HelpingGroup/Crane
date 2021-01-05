@@ -14,12 +14,14 @@ About Crane here.
 
 ### v0.2 - User Permissions & Platform-Specific Variations
 
+- Add the ability to include hashtags to posts.
 - Introduce user roles and permissions.
 - Limit users who can approve posts to managers.
 - Creating custom and varying posts for different platforms.
 
 ### v0.3 - API Integration
 
+- Calendar view on the Collaborate dashboard page.
 - Users (managers) can edit user roles and permission groups.
 - Scheduled posts will be automatically shared to their respective platforms, given that the post is approved by a manager before the publish date.
 

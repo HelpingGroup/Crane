@@ -23,8 +23,7 @@ class CommentFactory extends Factory
     {
         return [
             'user_id' => 1,
-            'post_id' => 76,
-            'comment' => $this->faker->realText(100, 1)
+            'comment' => $this->faker->text(100)
         ];
     }
 }

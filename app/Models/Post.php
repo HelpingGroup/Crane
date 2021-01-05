@@ -30,4 +30,12 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');;
     }
+
+    /**
+     * Get all of the files attached to the post.
+     */
+    public function files()
+    {
+        return $this->hasMany(File::class);
+    }
 }
