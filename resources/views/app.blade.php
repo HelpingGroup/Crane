@@ -24,17 +24,14 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-4 p-4 mt-8 xl:mx-auto xl:max-w-6xl">
-        <!-- Calendar -->
+    <div class="grid grid-cols-2 gap-8 p-4 mt-8 xl:mx-auto xl:max-w-6xl">
         <div class="h-64 col-span-2 p-4 bg-gray-100 shadow md:col-span-1">
             <h2 class="mb-2 text-2xl font-bold">Calendar</h2>
 
             The calendar will go here.
         </div>
 
-        <!-- Articles -->
         <div class="col-span-2 md:col-span-1">
-
             <div class="flex items-center justify-between mb-2">
                 <h2 class="text-2xl font-bold">Posts</h2>
                 <a href="/posts/create">Create Post</a>
@@ -48,14 +45,12 @@
                         <div class="flex-none text-sm italic">{{ date('H:i', strtotime($post->publish_at)) }}</div>
 
                         <a href="/posts/{{ $post->id }}" class="flex justify-between flex-grow gap-4 p-4 transition-all duration-100 ease-in-out transform bg-gray-100 shadow cursor-pointer hover:-translate-y-1 hover:shadow-lg">
-                            <!-- Published Status & Title -->
                             <div class="flex items-center gap-4">
                                 <i class="{{ $post->approved_by ? 'text-green-500 fad fa-circle' : 'text-gray-500 far fa-circle' }}"></i>
                                 <div class="font-semibold">{{ $post->title }}</div>
                             </div>
 
                             <div class="flex">
-                                <!-- Comments -->
                                 <!-- <span class="relative flex w-3 h-3">
                                     <span class="absolute inline-flex w-full h-full bg-purple-400 rounded-full opacity-75 animate-ping"></span>
                                     <span class="relative inline-flex w-3 h-3 bg-purple-500 rounded-full"></span>
@@ -72,10 +67,6 @@
                         </a>
                     </div>
                 </div>
-
-                @if($loop->index >= 4)
-                @break
-                @endif
                 @endforeach
             </div>
 

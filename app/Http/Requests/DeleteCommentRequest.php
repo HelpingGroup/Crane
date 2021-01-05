@@ -2,7 +2,11 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Comment;
+
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class DeleteCommentRequest extends FormRequest
 {
@@ -11,10 +15,9 @@ class DeleteCommentRequest extends FormRequest
      *
      * @return bool
      */
-    // TODO: Check this
     public function authorize()
     {
-        return true;
+        return Comment::find($this->comment_id)->user_id === Auth::user()->id;
     }
 
     /**

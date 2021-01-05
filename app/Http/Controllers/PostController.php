@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePostRequest;
-use App\Models\File;
-use App\Models\Post;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
+
+use App\Http\Requests\StorePostRequest;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -59,7 +58,7 @@ class PostController extends Controller
     {
         if ($request->file) {
             $file_name = time() . '_' . $request->file->getClientOriginalName();
-            $file_path = $request->file('file')->storeAs('uploads', $file_name, 'public');
+            $file_path = $request->file('file')->store('public');
             
             Post::find($request->post_id)->files()->create([
                 'name' => $file_name,
@@ -75,7 +74,7 @@ class PostController extends Controller
                'publish_at' => $request->publish_at
             ]);
 
-        return redirect()->route('posts', ['post' => $request['id']]);
+        return redirect()->route('posts', ['post' => $request->post_id]);
     }
 
     /**
@@ -86,6 +85,56 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        // TODO
+        $post->delete();
+
+        return redirect()->route('collaborate');
+    }
+
+    /**
+     * Remove the files from the post.
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyFiles(Post $post)
+    {
+        Log::debug('deleting files');
+        
+        foreach($post->files as $file) {
+            Storage::delete($file->file_path);
+            Log::debug($file->file_path);
+        }
+        
+        $post->files()->delete();
+
+        return redirect()->route('posts', ['post' => $post->id]);
+    }
+
+    /**
+     * Approve the post.
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function approve(Post $post)
+    {
+        $post->approved_by = Auth::user()->id;
+        $post->save();
+
+        return redirect()->route('posts', ['post' => $post->id]);
+    }
+
+    /**
+     * Refuse the post.
+     *
+     * @param  \App\Models\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function refuse(Post $post)
+    {
+        $post->approved_by = null;
+        $post->save();
+
+        return redirect()->route('posts', ['post' => $post->id]);
     }
 }

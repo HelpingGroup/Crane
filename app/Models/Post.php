@@ -24,11 +24,19 @@ class Post extends Model
     ];
 
     /**
+     * Check to see whether the post is approved.
+     */
+    public function isApproved()
+    {
+        return $this->approved_by !== null;
+    }
+
+    /**
      * Get all of the comments attached to the post.
      */
     public function comments()
     {
-        return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');;
+        return $this->hasMany(Comment::class)->orderBy('created_at', 'desc');
     }
 
     /**
