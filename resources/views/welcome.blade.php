@@ -7,13 +7,7 @@
 
     <title>Crane</title>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <x-meta-tags />
 </head>
 
 <body class="antialiased">
@@ -31,9 +25,18 @@
 
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="flex flex-col justify-center pt-8 text-center sm:justify-start sm:pt-0">
-                <h1 class="text-5xl font-black">Hello, world!</h1>
+                <h1 class="text-5xl font-black">Hello, world! <i class="ml-1 fal fa-globe-asia"></i></h1>
                 <h1 class="mb-2 text-3xl font-black">Welcome to Crane.</h1>
-                <p>The content for the homepage will go here...</p>
+
+                <div class="flex gap-4 mx-auto mt-8">
+                    <a href="{{ route('login') }}" class="flex items-center justify-center p-4 font-semibold transition-all duration-75 ease-in-out bg-blue-300 rounded-lg shadow w-28 align-center hover:bg-blue-600 hover:text-white hover:shadow-md">
+                        Login
+                    </a>
+
+                    <a href="{{ route('register') }}" class="flex items-center justify-center p-4 font-light transition-all duration-75 ease-in-out border rounded-lg shadow w-28 align-center hover:bg-blue-600 hover:text-white hover:shadow-md">
+                        Register
+                    </a>
+                </div>
             </div>
         </div>
     </div>

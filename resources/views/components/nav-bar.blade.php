@@ -8,5 +8,9 @@
         <a class="text-gray-900" href="/collaborate">Collaborate</a>
         <a class="text-gray-400 cursor-not-allowed" href="#">Metrics</a>
         <a class="text-gray-400 cursor-not-allowed" href="#">Profile</a>
+        <form action="{{ route('logout') }}" method="post">
+            @csrf
+            <button class="text-gray-900" type="submit">Logout</button>
+        </form>
     </div>
 </div>
