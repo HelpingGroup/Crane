@@ -46,7 +46,7 @@ A collaborative space for marketing & communications teams to work on, publish a
 - Scheduled posts will be automatically shared to their respective platforms, given that the post is approved by a manager before the publish date.
 - Platforms will include: facebook, twitter, linkedin, instagram
 
-### 0.4 - Metrics / Minimum Viable Product
+### v0.4 - Metrics / Minimum Viable Product
 
 - Search & filter functionality using Algolia & Laravel Scout
 - Ability to visualise and track key metrics across social media platforms; as a whole and per post.
