@@ -2,24 +2,26 @@
 
 ## About Crane
 
-About Crane here.
+A way to manage an organisation's FITs (Facebook, Instagram and Twitter).
+
+A collaborative space for marketing & communications teams to work on, publish and track metrics for social media outreach. 
 
 ## Roadmap
 
-### v0.1 - Minimum Usable Product
+### ✅ v0.1 - Minimum Usable Product
 
 - ~~Basic application structure with loose authentication.~~
 - ~~Ability to create post; title, content, optional file and approval status.~~
 - ~~Ability to comment on posts.~~
 
-### v0.11 - License & Recording
+### ✅ v0.11 - License & Recording
 
 - ~~Choose a license and open the repository to the public.~~
 - ~~Add hotjar website heatmaps~~
 - ~~Add sentry.io~~
 - ~~Added login/register buttons on the homepage... doh!~~
 
-### v0.12 - Channel collections (current)
+### 🔨 v0.12 - Channel collections (current)
 
 - Ability to use multiple channels on the platform (different projects, initiatives).
 - Posts should be able to post to both singular or multiple channels, and different platforms within each of those.
@@ -46,6 +48,7 @@ About Crane here.
 
 ### 0.4 - Metrics / Minimum Viable Product
 
+- Search & filter functionality using Algolia & Laravel Scout
 - Ability to visualise and track key metrics across social media platforms; as a whole and per post.
 
 ## Resources
